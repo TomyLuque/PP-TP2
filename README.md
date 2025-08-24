@@ -1,46 +1,41 @@
-# Práctico 2 — CRUD Django (Oficinas / Personas) + Auth + Captcha
+# practico 2 — CRUD Django (oficinas/ personas) auth, captcha
 
-Proyecto armadito para que lo levantes rápido. Está comentado en argentino y sin tanta vuelta.
 
-## Qué trae
-- Apps separadas: `oficinas`, `personas`, `accounts` (login, logout, registro con captcha)
-- CRUD completo con paginación, búsqueda (por nombre de persona), y detalle de oficina mostrando sus personas.
-- Carga masiva por CSV para **oficinas** y **personas** (desde interfaz).
-- Navbar con Bootstrap 5, links a listas, barra de búsqueda y botón Ingresar/Salir.
+
+## el proyecto:
+- apps separadas: `oficinas`, `personas`, `accounts` (login, logout, registro con captcha)
+- CRUD completo con paginacion, busqueda  y detalle de oficina mostrando sus personas.
+- carga masiva por CSV
+- navbar con Bootstrap 5, links a listas, barra de búsqueda y botón ingresar/Salir
 - Permisos: crear/editar/eliminar solo logueado.
-- Templates responsive con grid de Bootstrap.
+- templates responsive con grid de Bootstrap
 
-## Instalación rápida
+## instalacion
 ```bash
-# 1) Crear entorno (en Windows PowerShell):
+# 1) crear entorno
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 
-# o en Linux/Mac:
-python3 -m venv .venv
-source .venv/bin/activate
 
-# 2) Instalar dependencias
+# 2) instalar dependencias
 pip install -r requirements.txt
 
-# 3) Crear tablas y preparar captcha
+# 3) crear tablas y preparar captcha
 python manage.py migrate
 
-# 4) Crear superusuario para probar
+# 4) crear superusuario para probar
 python manage.py createsuperuser
 
-# 5) Levantar el server
+# 5) levantar el server
 python manage.py runserver
 ```
 
-## Variables clave
-- Usuario anónimo: puede ver listados y detalles.
-- Usuario logueado: además puede **crear/editar/eliminar** y **cargar CSV**.
+## variables clave
+- usuario anónimo: puede ver listados y detalles.
+- usuario logueado: ademas puede **crear/editar/eliminar** y **cargar CSV**.
 
-## Carga masiva (CSV)
-- Oficinas: columnas `nombre,nombre_corto`
-- Personas: columnas `apellido,nombre,edad,oficina_nombre_corto`
+## carga masiva (CSV)
+- oficinas: columnas `nombre,nombre_corto`
+- personas: columnas `apellido,nombre,edad,oficina_nombre_corto`
 
-Ejemplos en `samples/`.
 
-> Nota: si rompés algo, calmate, corré `migrate` y revisá la consola. Los mensajes de error están pensados para entender qué pasó al toque.
