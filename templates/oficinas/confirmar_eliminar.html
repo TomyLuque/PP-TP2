@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1 class="mb-3">Eliminar oficina</h1>
-<p>¿Seguro que querés borrar <strong>{{ object }}</strong>? Ojo que si tiene personas asignadas, puede fallar.</p>
+<p>¿Seguro que querés borrar <strong>{{ object }}</strong>?cuidado, si personas asignadas, puede fallar!!</p>
 <form method="post">
   {% csrf_token %}
   <button class="btn btn-danger">Sí, borrar</button>
