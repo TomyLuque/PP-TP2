@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-3">{{ oficina.nombre }} <small class="text-muted">({{ oficina.nombre_corto }})</small></h1>
+
+<h5 class="mt-4">Personas en esta oficina</h5>
+<ul class="list-group">
+  {% for p in oficina.personas.all %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span>{{ p.apellido }}, {{ p.nombre }} — {{ p.edad }} años</span>
+      <a class="btn btn-sm btn-info" href="{% url 'personas:detalle' p.pk %}">Ver</a>
+    </li>
+  {% empty %}
+    <li class="list-group-item">Todavía nadie labura acá.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="m-0">Personas</h1>
+  {% if user.is_authenticated %}
+    <div>
+      <a href="{% url 'personas:carga_masiva' %}" class="btn btn-outline-secondary">Carga masiva</a>
+      <a href="{% url 'personas:crear' %}" class="btn btn-primary">Nueva</a>
+    </div>
+  {% endif %}
+</div>
+
+<ul class="list-group">
+  {% for p in personas %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div><strong>{{ p.apellido }}, {{ p.nombre }}</strong> — {{ p.edad }} años — {{ p.oficina.nombre_corto }}</div>
+      <div class="btn-group">
+        <a class="btn btn-sm btn-info" href="{% url 'personas:detalle' p.pk %}">Ver</a>
+        {% if user.is_authenticated %}
+          <a class="btn btn-sm btn-warning" href="{% url 'personas:editar' p.pk %}">Modificar</a>
+          <a class="btn btn-sm btn-danger" href="{% url 'personas:eliminar' p.pk %}">Eliminar</a>
+        {% endif %}
+      </div>
+    </li>
+  {% empty %}
+    <li class="list-group-item">No hay personas cargadas.</li>
+  {% endfor %}
+</ul>
+
+{% include 'paginacion.html' with page_obj=personas %}
+{% endblock %}
