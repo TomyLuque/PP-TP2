@@ -6,7 +6,7 @@ from captcha.fields import CaptchaField
 
 class RegistroForm(UserCreationForm):
     # Agrego captcha para que no se registren bots re densos.
-    captcha = CaptchaField(label='No soy un robot (posta)')
+    captcha = CaptchaField(label='no soy un robot')
 
     class Meta:
         model = User
